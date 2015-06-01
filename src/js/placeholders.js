@@ -49,7 +49,8 @@ var Placeholders;
 
             // Events where we always hide the placeholder
             this.base.subscribe('editableClick', this.handleHidePlaceholderEvent.bind(this));
-            this.base.subscribe('editableKeypress', this.handleHidePlaceholderEvent.bind(this));
+            // Support Japanese IME never trigger keypress until press ENTER.
+            this.base.subscribe('editableKeydown', this.handleHidePlaceholderEvent.bind(this));
             this.base.subscribe('editablePaste', this.handleHidePlaceholderEvent.bind(this));
         },
 

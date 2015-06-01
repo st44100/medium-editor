@@ -3067,6 +3067,8 @@ var Placeholders;
             // Events where we always hide the placeholder
             this.base.subscribe('editableClick', this.handleHidePlaceholderEvent.bind(this));
             this.base.subscribe('editableKeypress', this.handleHidePlaceholderEvent.bind(this));
+            // Support Japanese IME
+            this.base.subscribe('editableKeyup', this.handleHidePlaceholderEvent.bind(this));
             this.base.subscribe('editablePaste', this.handleHidePlaceholderEvent.bind(this));
         },
 
