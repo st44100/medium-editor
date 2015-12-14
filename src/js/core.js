@@ -1005,10 +1005,15 @@ function MediumEditor(elements, options) {
 
         createLink: function (opts) {
             var customEvent,
+                sel,
                 i;
 
             if (opts.url && opts.url.trim().length > 0) {
                 this.options.ownerDocument.execCommand('createLink', false, opts.url);
+
+                // Fix wrong target for setTargetBlank
+                sel = window.getSelection();
+                sel.collapseToEnd();
 
                 if (this.options.targetBlank || opts.target === '_blank') {
                     Util.setTargetBlank(Selection.getSelectionStart(this.options.ownerDocument), opts.url);
