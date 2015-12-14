@@ -6397,10 +6397,9 @@ function MediumEditor(elements, options) {
             if (opts.url && opts.url.trim().length > 0) {
                 this.options.ownerDocument.execCommand('createLink', false, opts.url);
 
-                // Fix wrong target for setTargetBlank
+                this.saveSelection();
                 sel = window.getSelection();
                 sel.collapseToEnd();
-
                 if (this.options.targetBlank || opts.target === '_blank') {
                     Util.setTargetBlank(Selection.getSelectionStart(this.options.ownerDocument), opts.url);
                 }
@@ -6408,6 +6407,7 @@ function MediumEditor(elements, options) {
                 if (opts.buttonClass) {
                     Util.addClassToAnchors(Selection.getSelectionStart(this.options.ownerDocument), opts.buttonClass);
                 }
+                this.restoreSelection();
             }
 
             if (this.options.targetBlank || opts.target === '_blank' || opts.buttonClass) {
