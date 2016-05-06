@@ -31,6 +31,17 @@ describe('Toolbar TestCase', function () {
             expect(document.querySelectorAll('.medium-editor-toolbar').length).toBe(1);
         });
 
+        it('should set custom className to the editor toolbar', function () {
+            expect(document.querySelectorAll('.medium-editor-toolbar').length).toBe(0);
+            var editor = this.newMediumEditor('.editor', {
+                    toolbarClassName: 'my-custom-classname'
+                }),
+                toolbar = editor.toolbar.getToolbarElement();
+            expect(toolbar.className).toMatch(/medium-editor-toolbar/);
+            expect(toolbar.className).toMatch(/my-custom-classname/);
+            expect(document.querySelectorAll('.medium-editor-toolbar').length).toBe(1);
+        });
+
         it('should not create an anchor form element or anchor extension if anchor is not passed as a button', function () {
             expect(document.querySelectorAll('.medium-editor-toolbar-form-anchor').length).toBe(0);
             var editor = this.newMediumEditor('.editor', {

@@ -4839,6 +4839,10 @@ var Toolbar;
             toolbar.id = 'medium-editor-toolbar-' + this.base.id;
             toolbar.className = 'medium-editor-toolbar';
 
+            if (this.options.toolbarClassName) {
+                toolbar.classList.add(this.options.toolbarClassName);
+            }
+
             if (this.options.staticToolbar) {
                 toolbar.className += ' static-toolbar';
             } else {
