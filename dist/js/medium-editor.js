@@ -5443,6 +5443,10 @@ MediumEditor.extensions = {};
             toolbar.id = 'medium-editor-toolbar-' + this.getEditorId();
             toolbar.className = 'medium-editor-toolbar';
 
+            if (this.options.toolbarClassName) {
+                toolbar.classList.add(this.options.toolbarClassName);
+            }
+
             if (this.static) {
                 toolbar.className += ' static-toolbar';
             } else if (this.relativeContainer) {
